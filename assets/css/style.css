@@ -1,5 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
+}
+
+
+.site-header {
+  background-color: #f8f9fa;
+  padding: 5px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+  max-width: 40px;
+}
+
+.main-navigation ul {
+  list-style-type: none;
+}
+
+.main-navigation ul li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.main-navigation ul li:first-child {
+  margin-left: 0;
+}
+
+.main-navigation ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.main-navigation ul li a:hover {
+  color: #007bff;
 }
