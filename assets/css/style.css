@@ -8,6 +8,19 @@ body {
   background-color: #1e1e1e;
   color: #ffffff;
 }
+.blur-shape {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #2ECC71, #3498DB);
+  filter: blur(100px);
+  transition: transform 5s linear;
+  z-index: -1;
+
+}
+
 
 header {
   display: flex;
