@@ -8,20 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const trackWidth = itemCount * itemWidth;
     let currentIndex = 0;
     let isTransitioning = false;
-    let intervalId = null;
-    let autoScrollTimeout = null;
 
     carouselTrack.innerHTML += carouselTrack.innerHTML;
 
     function updateCarousel() {
         const offset = -currentIndex * itemWidth;
-        carouselTrack.style.transition = 'transform 0.4s ease-in-out';
         carouselTrack.style.transform = `translateX(${offset}px)`;
     }
 
     prevButton.addEventListener('click', function() {
         if (!isTransitioning) {
-            clearInterval(intervalId);
+            isTransitioning = true;
             currentIndex--;
             if (currentIndex < 0) {
                 currentIndex = itemCount;
@@ -31,21 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     carouselTrack.style.transition = 'transform 0.4s ease-in-out';
                     currentIndex--;
                     updateCarousel();
-                }, 50);
+                }, 10);
             } else {
                 updateCarousel();
             }
-            startAutoScrollAfterDelay();
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 400);
         }
-        isTransitioning = true;
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 400);
     });
 
     nextButton.addEventListener('click', function() {
         if (!isTransitioning) {
-            clearInterval(intervalId);
+            isTransitioning = true;
             currentIndex++;
             updateCarousel();
             if (currentIndex > itemCount) {
@@ -58,24 +53,50 @@ document.addEventListener('DOMContentLoaded', function() {
                     updateCarousel();
                 }, 50);
             }
-            startAutoScrollAfterDelay();
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 400);
         }
-        isTransitioning = true;
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 400);
     });
 
-    function startAutoScrollAfterDelay() {
-        clearTimeout(autoScrollTimeout);
-        autoScrollTimeout = setTimeout(() => {
-            startAutoScroll();
-        }, 5000);
-    }
+    // Fonctionnalité d'auto-scroll
+    let intervalId = startAutoScroll();
+
     function startAutoScroll() {
-        intervalId = setInterval(function() {
+        return setInterval(function() {
             nextButton.click();
         }, 5000);
     }
+
+    // Arrêter l'autoscroll lorsque l'utilisateur interagit avec les boutons de navigation
+    function stopAutoScroll() {
+        clearInterval(intervalId);
+    }
+
+    prevButton.addEventListener('click', stopAutoScroll);
+    nextButton.addEventListener('click', stopAutoScroll);
+
+    // Initialisation de l'autoscroll
     startAutoScroll();
+
+    // Ajout de la fonctionnalité de swipe
+    let startX = 0;
+    let endX = 0;
+
+    carouselTrack.addEventListener('touchstart', function(event) {
+        startX = event.touches[0].clientX;
+    });
+
+    carouselTrack.addEventListener('touchmove', function(event) {
+        endX = event.touches[0].clientX;
+    });
+
+    carouselTrack.addEventListener('touchend', function() {
+        const threshold = 50; // Seuil en pixels pour considérer comme un swipe
+        if (startX - endX > threshold) {
+            nextButton.click();
+        } else if (endX - startX > threshold) {
+            prevButton.click();
+        }
+    });
 });

@@ -1,26 +1,54 @@
-html {
-  scroll-behavior: smooth;
+
+*::-webkit-scrollbar{
+  background-color:transparent;
+  height:.6em;
+  width:.6em
+}
+*::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+*::-webkit-scrollbar-thumb{
+  border-radius:.6em;
+  background-color: #2f2f2f;
+}
+*::-webkit-scrollbar-thumb:hover{
+  background-color: #333333;
 }
 
+html {
+  scroll-behavior: smooth;
+  max-width: 100% !important; 
+  overflow-x: hidden !important
+}
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   background-color: #1e1e1e;
   color: #ffffff;
+  max-width: 100% !important; 
+  overflow-x: hidden !important
 }
-.blur-shape {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, #2ECC71, #3498DB);
-  filter: blur(100px);
-  transition: transform 5s linear;
+.blur-shape2 {
+  position: absolute;
+  top: 30%;
+  left: -200px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #3498DB, #3498DB);
+  filter: blur(200px);
   z-index: -1;
-
 }
 
+.blur-shape1 {
+  position: absolute;
+  top: 30%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #2ECC71, #2ECC71);
+  filter: blur(200px);
+  z-index: -1;
+  right: -200px;
+}
 
 header {
   display: flex;
@@ -28,8 +56,18 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 10px 10%;
-  border-bottom: 2px solid #252525;
+  border-bottom: 2px solid #2121218a;
+  background: #1e1e1e7e;
+  backdrop-filter: blur(100px);
+  z-index: 10000;
 }
+
+.menu-icon {
+  font-size: 30px;
+  display: none;
+  cursor: pointer;
+}
+
 
 .left-float, .right-float {
   display: flex;
@@ -124,6 +162,7 @@ header {
   border-radius: 5px;
   transform: translateX(18%);
   margin-top: 4%;
+  position: relative;
 }
 
 .fade-out-image img{
@@ -162,7 +201,7 @@ header {
   overflow: hidden;
   border-radius: 10px;
   background: rgb(0 0 0 / 10%);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
   box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
 }
 
@@ -248,14 +287,12 @@ button.prev:hover, button.next:hover {
   max-width: calc(50% - 20px);
   border-radius: 10px;
   background: rgb(0 0 0 / 10%);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
   box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
   transition: transform 0.3s ease;
 }
 
-.actus-card:hover {
-  transform: scale(1.02);
-}
+
 .actus-card img {
   width: 100%;
   height: auto;
@@ -290,7 +327,7 @@ button.prev:hover, button.next:hover {
   gap: 20px;
   padding: 20px;
   background: rgb(0 0 0 / 10%);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
   box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
   border-radius: 10px;
 }
@@ -299,7 +336,7 @@ button.prev:hover, button.next:hover {
   border-radius: 8px;
   overflow: hidden;
   background: rgba(84, 84, 84, 0.1);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
   box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
 }
 
@@ -309,7 +346,7 @@ button.prev:hover, button.next:hover {
   border-radius: 8.5px 8.5px 0 0;
   font-weight: bold;
   background: rgba(67, 67, 67, 0.1);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
 }
 
 .update-description {
@@ -324,7 +361,7 @@ button.prev:hover, button.next:hover {
   padding: 30px 30px 20px 30px;
   color: #2f2f2f;
   background: rgb(0 0 0 / 10%);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(80px);
   box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
   border-top: 1px solid #2b2b2b;
 }
@@ -400,7 +437,6 @@ button.prev:hover, button.next:hover {
   flex: 1 50%;
   margin-right: 1.25em;
 }
-
 .nav__ul a {
   color: #999;
 }
@@ -424,6 +460,7 @@ button.prev:hover, button.next:hover {
 .heart {
   color: #2f2f2f;
 }
+
 
 @media screen and (min-width: 24.375em) {
   .legal .legal__links {
@@ -456,6 +493,16 @@ button.prev:hover, button.next:hover {
     width: 95%;
     margin-top: 20%;
   }
+  header {
+    background: #1e1e1e;
+  }
+  .right-float {
+    display: none;
+  }
+  .blur-shape1, .blur-shape2 {
+    width: 200px;
+    height: 200px;
+  }
   .info {
     width: 85%;
   }
@@ -470,22 +517,28 @@ button.prev:hover, button.next:hover {
     font-size: 15px;
   }
   .fade-out-image {
-    display: none;
+    width: 90%;
+    transform: translateX(5%);
   }
   .actus-card {
     flex: 1 1 100%;
     max-width: calc(100% - 20px);
   }
+  .carousel {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
   .carousel-container {
     margin: 0 auto;
   }
   .carousel-item {
-    flex: 0 0 65%;
-    margin: 0 5px;
+    width: 90%;
+    flex: 0 0 calc(90% - 5px);
   }
   button.prev, button.next {
-      font-size: 1.5rem;
-      padding: 5px;
+      display: none;
   }
   .titlespan {
     font-size: 30px;

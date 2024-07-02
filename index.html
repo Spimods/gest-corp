@@ -9,12 +9,14 @@
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/png">
 </head>
 <body>
-    <header>
+    <header id="home">
         <div class="left-float">
-            <a href="#">
+            <a href="#home">
                 <img class="logo" src="./assets/images/logo.png" alt="Logo"> <!--logo-->
             </a>
         </div>
+    
+    
         <div class="right-float">   <!--nav-->
             <ul>
                 <li><a href="#app">Nos apps</a></li>
@@ -22,6 +24,7 @@
                 <li><a href="#Maj">Les mises à jour en cours</a></li>
             </ul>
         </div>
+
     </header>
 
 
@@ -68,6 +71,8 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-indicators"></div>
+
                     <button class="next">&#10095;</button>
                 </div>
             </section>
@@ -157,18 +162,18 @@
     
             <ul class="nav__ul">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="#home">Home</a>
                 </li>
         
                 <li>
-                    <a href="#">Nos apps</a>
+                    <a href="#app">Nos apps</a>
                 </li>
                 
                 <li>
-                    <a href="#">Actualités</a>
+                    <a href="#actus">Actualités</a>
                 </li>
                 <li>
-                    <a href="#">Les mises à jour en cours</a>
+                    <a href="#Maj">Les mises à jour en cours</a>
                 </li>
             </ul>
         </li>
@@ -223,7 +228,8 @@
         
         </div>
     </footer>
-
+    <div class="blur-shape2"></div>
+    <div class="blur-shape1"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
