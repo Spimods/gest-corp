@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        require_once('./../asset/conn.php');
+        require_once('./../assets/conn.php');
         
         $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE (username = :username)");
         $stmt->bindParam(':username', $username);

@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['date'], $_POST['description_maj'], $_POST['platform'])) {
 
-        require_once('./../asset/conn.php');
+        require_once('./../assets/conn.php');
 
         $date = $_POST['date'];
         $description_maj = $_POST['description_maj'];

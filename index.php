@@ -1,6 +1,6 @@
 <?php 
 try {
-    require_once('./asset/conn.php');
+    require_once('./assets/conn.php');
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }

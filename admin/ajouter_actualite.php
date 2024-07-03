@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['titre'], $_POST['description'], $_FILES['image'])) {
 
-        require_once('./../asset/conn.php');
+        require_once('./../assets/conn.php');
 
         $titre = $_POST['titre'];
         $description = $_POST['description'];
