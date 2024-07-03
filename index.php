@@ -1,3 +1,23 @@
+<?php 
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=gest-corp', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+$stmt = $pdo->query("SELECT image, titre, description FROM actus ORDER BY id DESC");
+$actus = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$stmt = $pdo->query("SELECT date, platform, description FROM updates WHERE date >= CURDATE() ORDER BY date ASC");
+$updates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$elements = [
+    'actus' => $actus,
+    'update' => $updates
+];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -115,56 +135,39 @@
                 <section class="actus" id="actus"><!--actus-->
                     <span class="titlespan">Actualités</span>
                     <div class="container">
-                        <div class="actus-card">
-                            <img src="./assets/images/landing-page.jpg" alt="Image de l'actualité">
-                            <div class="actus-details">
-                                <h2>Titre de l'actualité</h2>
-                                <p>Description courte de l'actualité.</p>
+                    <?php foreach ($elements['actus'] as $element) { ?>
+                            <div class="actus-card">
+                                <img src="./assets/actus/<?php echo $element['image'];?>" alt="Image de l'actualité">
+                                <div class="actus-details">
+                                    <h2><?php echo $element['titre'];?></h2>
+                                    <p><?php echo $element['description'];?>.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="actus-card">
-                            <img src="./assets/images/landing-page.jpg" alt="Image de l'actualité">
-                            <div class="actus-details">
-                                <h2>Titre de l'actualité</h2>
-                                <p>Description courte de l'actualité.</p>
-                            </div>
-                        </div>
-
-                        <div class="actus-card">
-                            <img src="./assets/images/landing-page.jpg" alt="Image de l'actualité">
-                            <div class="actus-details">
-                                <h2>Titre de l'actualité</h2>
-                                <p>Description courte de l'actualité.</p>
-                            </div>
-                        </div>
-
-                        <div class="actus-card">
-                            <img src="./assets/images/landing-page.jpg" alt="Image de l'actualité">
-                            <div class="actus-details">
-                                <h2>Titre de l'actualité</h2>
-                                <p>Description courte de l'actualité.</p>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </section>
-            </div> 
+            </div>
+
+
             <div> <!--Màj en cours-->
                 <section class="Maj" id="Maj">
                     <span class="titlespan">Les mises à jour en cours</span>
                     <div class="container">
                         <div class="updates">
-                            <div class="update">
-                                <div class="update-date">12 juillet 2024</div><div class="plateform">GEST SPV</div>
-                                <div class="update-description">Ajout de nouvelles fonctionnalités de sécurité</div>
-                            </div>
-                            <div class="update">
-                                <div class="update-date">25 juillet 2024</div><div class="plateform">GEST JSP</div>
-                                <div class="update-description">Optimisation des performances du système</div>
-                            </div>
-                            <div class="update">
-                                <div class="update-date">8 août 2024</div><div class="plateform">GEST AMICALE</div>
-                                <div class="update-description">Intégration de nouvelles API externes</div>
-                            </div>
+                            <?php
+                            if (count($elements['update']) == 0) {
+                                ?>
+                                <div class="update">
+                                <div class="update-date">Aucune mise à jour programmée.</div>
+                                </div>
+                                <?php
+                            } else {
+                                foreach ($elements['update'] as $element) { ?>
+                                <div class="update">
+                                    <div class="update-date"><?php echo $element['date'];?></div><div class="plateform"><?php echo $element['platform'];?></div>
+                                    <div class="update-description"><?php echo $element['description'];?></div>
+                                </div>
+                            <?php } }?>
                         </div>
                     </div>
                 </section>

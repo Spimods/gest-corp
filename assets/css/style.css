@@ -283,6 +283,7 @@ header {
   margin-left: 2%;
   display: block;
   color: #c5c5c5;
+  display: none;
 }
 
 button.prev, button.next {
