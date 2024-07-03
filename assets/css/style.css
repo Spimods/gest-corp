@@ -382,8 +382,18 @@ button.prev:hover, button.next:hover {
   font-weight: bold;
   background: rgba(67, 67, 67, 0.1);
   backdrop-filter: blur(80px);
+  display: inline-flex;
+  width: 100%;
 }
-
+.plateform {
+  display: inline-flex;
+  position: absolute;
+  float: right;
+  color: #999;
+  top: 0;
+  padding: 10px;
+  right: 0;
+}
 .update-description {
   padding: 15px;
 }
@@ -544,8 +554,14 @@ button.prev:hover, button.next:hover {
   .info-text {
     font-size: 15px;
   }
+  .aproposdiv {
+    padding: 20px 20px 20px 20px;
+  }
   .aproposdiv h2 {
     font-size: 25px;
+  }
+  .aproposdiv img {
+    width: 50%;
   }
   .aproposdiv .span {
     font-size: 15px;
