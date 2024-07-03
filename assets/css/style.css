@@ -692,3 +692,9 @@ button.prev:hover, button.next:hover {
   text-decoration: none;
   color: currentColor;
 }
+.mentions h4 {
+  width: fit-content;
+  margin-left: 20px;
+  font-size: 20px;
+  color: #959595;
+}
