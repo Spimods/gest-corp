@@ -8,8 +8,9 @@ if (!isset($_SESSION['username'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['titre'], $_POST['description'], $_FILES['image'])) {
-        $pdo = new PDO('mysql:host=localhost;dbname=gest-corp', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        require_once('./../asset/conn.php');
+
         $titre = $_POST['titre'];
         $description = $_POST['description'];
         $image_name = $_FILES['image']['name'];

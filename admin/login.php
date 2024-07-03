@@ -6,8 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        $pdo = new PDO('mysql:host=localhost;dbname=gest-corp', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require_once('./../asset/conn.php');
         
         $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE (username = :username)");
         $stmt->bindParam(':username', $username);

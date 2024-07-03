@@ -1,7 +1,6 @@
 <?php 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=gest-corp', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once('./asset/conn.php');
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }

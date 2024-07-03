@@ -7,9 +7,9 @@ if (!isset($_SESSION['username'])) {
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['date'], $_POST['description_maj'], $_POST['platform'])) {
-        $pdo = new PDO('mysql:host=localhost;dbname=gest-corp', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
+        require_once('./../asset/conn.php');
+
         $date = $_POST['date'];
         $description_maj = $_POST['description_maj'];
         $platform = $_POST['platform'];
