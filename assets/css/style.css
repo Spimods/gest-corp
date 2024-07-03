@@ -61,22 +61,29 @@ header {
   z-index: 10000;
 }
 
-.menu-icon {
-  font-size: 30px;
-  display: none;
-  cursor: pointer;
+.left-float, .right-float {
+  display: flex;
+  align-items: center;
 }
 
-
-.left-float, .right-float {
+.logo-container {
   display: flex;
   align-items: center;
 }
 
 .logo {
   max-height: 50px;
-  margin-right: 40px;
+  margin-right: 10px;
 }
+
+.text-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+
+
 
 .right-float ul {
   list-style: none;
@@ -530,7 +537,14 @@ button.prev:hover, button.next:hover {
     flex: 2 0px;
   }
 }
-
+@media (max-width: 1000px) {
+  header {
+    padding: 10px 5%;
+  }
+  .right-float ul {
+    gap: 0px;
+  }
+}
 
 @media (max-width: 768px) {
   .title {
