@@ -212,6 +212,11 @@ header {
   font-size: 18px;
   line-height: 1.6;
 }
+.span ul {
+  text-align: center;
+  word-wrap: break-word;
+  list-style: none;
+}
 
 .Apps {
   margin-top: 5%;
@@ -404,7 +409,6 @@ button.prev:hover, button.next:hover {
 .update-description {
   padding: 15px;
 }
-
 
 
 .footer {
@@ -657,3 +661,34 @@ button.prev:hover, button.next:hover {
 
 
 
+.mentions {
+  width: 80%;
+  padding: 20px;
+  margin: 4% auto;
+  backdrop-filter: blur(80px);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 54%);
+  background-color: #1e1e1e6e;
+  border-radius: 10px;
+}
+.mentions p {
+  color: #b3b3b3;
+  width: 95%;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 15px;
+}
+.mentions h3 {
+  width: fit-content;
+  margin-left: 15px;
+  font-size: 20px;
+  color: #d1d1d1;
+}
+.mentions h2 {
+  text-align: center;
+  font-size: 30px;
+}
+.mentions a {
+  text-decoration: none;
+  color: currentColor;
+}
